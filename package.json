@@ -1,0 +1,10 @@
+{
+  "name": "clearfintech",
+  "version": "0.1.0",
+  "description": "Payment processing and merchant services platform for small-to-mid-size businesses",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

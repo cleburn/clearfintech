@@ -1,0 +1,101 @@
+customer_id,first_name,last_name,date_of_birth,ssn,email,phone,address,city,state,zip,bank_name,routing_number,account_number,account_type,enrollment_date,merchant_tier
+CUST-10001,Robert,Mitchell,10/11/1966,559-76-4558,robert.mitchell95@yahoo.com,(207) 977-3615,4606 Birch Way Apt 755,San Antonio,TX,78244,Discover Bank,031100649,00133890838,Checking,12/15/2024,Standard
+CUST-10002,Kimberly,Martinez,03/29/1953,146-85-3734,kimberly.martinez13@aol.com,(497) 281-4814,3627 Harbor Way,Philadelphia,PA,19125,KeyBank,041001039,407816184959,Savings,04/14/2023,Standard
+CUST-10003,Cynthia,Green,07/20/1967,132-41-6573,cynthia.green35@yahoo.com,(475) 267-4456,6077 Pine Rd,Columbus,OH,43243,Goldman Sachs,124085024,832764835,Checking,08/03/2024,Premium
+CUST-10004,Margaret,Adams,09/17/1992,605-12-0772,margaret.adams19@icloud.com,(313) 356-3621,8279 Market St,New Orleans,LA,70141,US Bank,091000019,884969653,Savings,11/27/2024,Standard
+CUST-10005,Ronald,Harris,07/18/1956,740-39-8318,ronald.harris88@yahoo.com,(824) 403-3504,9863 Sunset Blvd,Atlanta,GA,30301,Ally Bank,124003116,5146270482,Savings,01/18/2024,Premium
+CUST-10006,Jamal,Lee,10/12/1970,640-78-6933,jamal.lee8@hotmail.com,(417) 752-4295,8105 Main St Apt 372,Nashville,TN,37216,Discover Bank,031100649,17182278,Savings,12/31/2024,Enterprise
+CUST-10007,Melissa,Lewis,12/26/1971,785-63-3511,melissa.lewis3@hotmail.com,(753) 335-8744,8579 Sunset Blvd Apt 231,Phoenix,AZ,85022,Discover Bank,031100649,010310518,Savings,09/06/2023,Standard
+CUST-10008,Betty,Miller,11/06/1984,287-36-7580,betty.miller60@gmail.com,(456) 277-8260,1688 Orchard Ln,Baltimore,MD,21227,Citibank,021000089,65133387,Savings,07/17/2024,Standard
+CUST-10009,Miguel,Washington,11/10/1996,777-92-7974,miguel.washington53@mail.com,(359) 394-5861,341 Maple Dr,Indianapolis,IN,46211,USAA,314074269,602606474,Checking,08/11/2023,Standard
+CUST-10010,Kevin,Brown,07/26/1950,734-11-6869,kevin.brown8@yahoo.com,(874) 797-9565,921 Commerce Blvd,Mesa,AZ,85211,PNC Bank,043000096,91361939,Savings,11/20/2023,Enterprise
+CUST-10011,Kevin,Thomas,02/25/1980,391-21-7180,kevin.thomas41@yahoo.com,(757) 920-5956,4451 Market St Apt 661,Nashville,TN,37230,Chase,021000021,99118384251,Savings,09/18/2024,Premium
+CUST-10012,Raj,Martin,10/28/1971,145-01-5465,raj.martin71@outlook.com,(334) 852-5291,1797 Franklin Ave Apt 119,San Antonio,TX,78248,BB&T,053101121,9353487401,Checking,06/15/2023,Premium
+CUST-10013,Guadalupe,Rivera,03/25/1997,516-80-2533,guadalupe.rivera70@gmail.com,(443) 366-3900,7107 Mountain View Terrace Apt 78,Anchorage,AK,99510,KeyBank,041001039,826204505331,Checking,02/27/2024,Standard
+CUST-10014,Brian,Patel,06/13/1976,385-09-4574,brian.patel35@outlook.com,(560) 856-9346,6845 College Ave,Richmond,VA,23234,Citibank,021000089,07337543303,Checking,02/14/2024,Premium
+CUST-10015,Patricia,Davis,08/23/1993,651-88-3229,patricia.davis14@protonmail.com,(573) 641-2146,4379 Pine Rd,San Francisco,CA,94103,KeyBank,041001039,6981693406,Checking,11/11/2024,Enterprise
+CUST-10016,Jessica,Campbell,04/06/1974,393-27-7044,jessica.campbell52@icloud.com,(794) 821-6279,5020 River Rd,Louisville,KY,40221,Ally Bank,124003116,366299468,Checking,04/21/2024,Standard
+CUST-10017,Margaret,Allen,07/14/1953,566-54-9432,margaret.allen85@yahoo.com,(400) 935-7291,7852 College Ave,Richmond,VA,23229,SunTrust,061000104,951343320037,Savings,05/21/2024,Standard
+CUST-10018,Christopher,Adams,12/18/2001,836-65-6992,christopher.adams55@hotmail.com,(762) 656-3607,190 Franklin Ave,Des Moines,IA,50307,PNC Bank,043000096,708317278895,Checking,01/31/2025,Standard
+CUST-10019,Dorothy,Carter,09/30/1967,492-89-2504,dorothy.carter67@mail.com,(924) 419-2052,4150 Church St,Des Moines,IA,50350,TD Bank,031101266,7143455812,Savings,02/29/2024,Standard
+CUST-10020,Mei,Robinson,06/27/1971,546-63-0476,mei.robinson75@gmail.com,(599) 544-7624,6912 Oak Ave Apt 431,Las Vegas,NV,89150,Discover Bank,031100649,70546688937,Savings,01/11/2025,Premium
+CUST-10021,Sarah,Flores,12/18/1971,870-54-4134,sarah.flores85@gmail.com,(284) 681-1317,8851 Main St,Miami,FL,33137,Wells Fargo,121000248,27204653755,Checking,02/06/2025,Standard
+CUST-10022,George,Anderson,12/27/1969,885-48-2750,george.anderson4@hotmail.com,(821) 821-2876,1224 Harbor Way,Chicago,IL,60649,Capital One,051405515,92327193,Checking,03/07/2025,Premium
+CUST-10023,Susan,Nguyen,08/12/1977,112-54-8032,susan.nguyen51@hotmail.com,(309) 643-6934,520 Washington Blvd,Honolulu,HI,96825,Wells Fargo,121000248,314919058651,Savings,10/12/2024,Standard
+CUST-10024,Jeffrey,Lopez,05/07/1991,432-24-7989,jeffrey.lopez62@mail.com,(418) 563-5232,8648 Valley Rd,Kansas City,MO,64150,M&T Bank,022000046,453147379965,Checking,12/15/2023,Enterprise
+CUST-10025,Guadalupe,Smith,08/19/1994,452-55-9018,guadalupe.smith72@hotmail.com,(539) 560-8434,8564 Walnut Blvd Apt 738,Louisville,KY,40232,USAA,314074269,70143634957,Savings,10/05/2023,Enterprise
+CUST-10026,Sandra,Davis,04/08/1948,825-69-2074,sandra.davis24@hotmail.com,(481) 246-1893,3255 Park Ave Apt 549,Boise,ID,83745,Capital One,051405515,49894134352,Checking,07/20/2024,Enterprise
+CUST-10027,Andre,Miller,04/05/1974,187-32-1941,andre.miller44@outlook.com,(772) 982-7818,300 Commerce Blvd,Tucson,AZ,85729,Bank of America,026009593,7116719022,Savings,09/12/2024,Standard
+CUST-10028,Carlos,Harris,01/16/1961,102-53-7382,carlos.harris40@gmail.com,(906) 808-8699,7481 Washington Blvd,Miami,FL,33128,Goldman Sachs,124085024,33412328,Checking,10/26/2023,Standard
+CUST-10029,Joshua,Rivera,08/06/1974,709-96-9326,joshua.rivera30@icloud.com,(496) 649-3037,4732 Meadow Dr,Phoenix,AZ,85044,Discover Bank,031100649,618324210,Savings,04/24/2024,Premium
+CUST-10030,Stephanie,Moore,09/03/1986,384-24-9591,stephanie.moore6@protonmail.com,(647) 850-9056,8299 Mountain View Terrace,Philadelphia,PA,19139,Fifth Third,042000314,401399049027,Savings,04/04/2023,Standard
+CUST-10031,Rebecca,Perez,06/12/1988,523-07-3074,rebecca.perez89@mail.com,(731) 570-9167,5360 Orchard Ln Apt 165,El Paso,TX,79927,SunTrust,061000104,80715451680,Savings,10/02/2024,Standard
+CUST-10032,Mark,Moore,09/17/1991,833-38-8338,mark.moore63@yahoo.com,(923) 479-7807,9098 Elm St,Milwaukee,WI,53245,Chase,021000021,324808613171,Savings,05/09/2024,Standard
+CUST-10033,Jacob,Scott,06/14/1990,453-43-9043,jacob.scott18@yahoo.com,(982) 756-7180,2469 Market St Apt 614,Sacramento,CA,95848,BB&T,053101121,58404499727,Savings,04/11/2024,Enterprise
+CUST-10034,Steven,Torres,05/17/1948,839-19-6718,steven.torres41@mail.com,(871) 358-2225,6374 Birch Way,Louisville,KY,40203,Regions,062000019,27028951718,Checking,04/25/2024,Enterprise
+CUST-10035,Svetlana,Hall,08/06/1949,147-42-0920,svetlana.hall49@aol.com,(501) 567-7141,6612 Valley Rd Apt 337,Honolulu,HI,96835,USAA,314074269,091343161172,Checking,03/17/2024,Premium
+CUST-10036,Carlos,Clark,10/21/1972,793-70-2589,carlos.clark11@protonmail.com,(276) 652-6661,9372 Orchard Ln,Austin,TX,78712,Goldman Sachs,124085024,792374740,Checking,08/24/2024,Enterprise
+CUST-10037,Dorothy,Robinson,09/04/1972,894-30-9947,dorothy.robinson31@protonmail.com,(561) 424-4115,5049 Walnut Blvd,Tucson,AZ,85707,Discover Bank,031100649,9440640909,Checking,09/27/2024,Enterprise
+CUST-10038,Joseph,Al-Rashid,01/20/1970,593-38-5550,joseph.al-rashid47@outlook.com,(318) 679-2233,745 Willow Ln,Chicago,IL,60638,Wells Fargo,121000248,5623285884,Savings,05/25/2023,Premium
+CUST-10039,Guadalupe,White,11/10/1966,763-09-7607,guadalupe.white16@mail.com,(918) 509-7689,1579 College Ave,San Francisco,CA,94135,KeyBank,041001039,9651370985,Savings,04/30/2023,Premium
+CUST-10040,Michael,Martin,11/23/1986,341-47-1628,michael.martin50@mail.com,(903) 576-9920,8171 Cedar Ln Apt 909,Kansas City,MO,64109,KeyBank,041001039,692617964053,Checking,10/22/2024,Enterprise
+CUST-10041,Edward,Moore,08/10/1999,321-30-5384,edward.moore85@hotmail.com,(352) 810-1046,3209 Cedar Ln,Albuquerque,NM,87106,Goldman Sachs,124085024,05329318,Savings,10/11/2023,Premium
+CUST-10042,Miguel,Taylor,01/16/1993,707-14-7406,miguel.taylor2@aol.com,(716) 426-1710,2958 Cedar Ln,Los Angeles,CA,90009,TD Bank,031101266,502402681177,Checking,01/14/2025,Premium
+CUST-10043,Cynthia,Adams,03/04/1981,711-68-4832,cynthia.adams88@yahoo.com,(665) 717-8048,610 Oak Ave,Memphis,TN,38128,USAA,314074269,11592124998,Checking,04/12/2023,Premium
+CUST-10044,Raj,Campbell,09/29/1985,198-96-6106,raj.campbell44@mail.com,(334) 769-1982,3622 Highland Dr,Charlotte,NC,28227,Regions,062000019,15654527111,Checking,08/23/2024,Standard
+CUST-10045,Jessica,Clark,04/22/1957,880-36-9407,jessica.clark93@gmail.com,(432) 639-1430,5893 Spring St,Boise,ID,83728,SunTrust,061000104,451983273158,Checking,09/15/2024,Premium
+CUST-10046,Patricia,Lopez,12/16/1974,838-42-9300,patricia.lopez1@outlook.com,(287) 253-3549,4577 Meadow Dr,El Paso,TX,79923,US Bank,091000019,612018366752,Checking,06/11/2023,Standard
+CUST-10047,Richard,Moore,12/01/1951,107-27-4939,richard.moore54@icloud.com,(417) 985-3248,7359 Orchard Ln,Raleigh,NC,27629,Capital One,051405515,156149784036,Savings,02/21/2025,Enterprise
+CUST-10048,Michelle,Davis,06/06/2004,527-38-1888,michelle.davis49@hotmail.com,(615) 221-6321,226 Lake Shore Dr,Jacksonville,FL,32209,Navy Federal,256074974,516060715969,Checking,06/25/2023,Standard
+CUST-10049,Melissa,Garcia,07/01/1978,844-83-2420,melissa.garcia68@yahoo.com,(442) 305-3399,7255 Spring St Apt 447,Miami,FL,33126,Regions,062000019,5352181883,Checking,09/20/2023,Premium
+CUST-10050,Jamal,Martinez,08/28/1953,417-60-7405,jamal.martinez60@mail.com,(239) 258-7041,1334 Pine Rd,Tampa,FL,33632,Discover Bank,031100649,552717744905,Savings,10/21/2023,Standard
+CUST-10051,Dmitri,Hill,07/06/1950,353-91-7173,dmitri.hill95@gmail.com,(650) 736-9564,8407 Market St,Atlanta,GA,30351,Huntington,044000024,359782071518,Savings,09/16/2024,Premium
+CUST-10052,Melissa,Johansson,04/24/1954,696-85-2318,melissa.johansson77@gmail.com,(559) 517-7421,4734 Market St,El Paso,TX,79944,Fifth Third,042000314,51864492,Checking,05/13/2023,Standard
+CUST-10053,Kenneth,Scott,07/15/1973,203-65-8844,kenneth.scott90@yahoo.com,(957) 739-1618,6271 Valley Rd,Dallas,TX,75243,M&T Bank,022000046,505423573322,Checking,11/08/2024,Enterprise
+CUST-10054,Jamal,Harris,01/01/1980,794-74-7219,jamal.harris22@mail.com,(673) 987-5616,2627 Pine Rd Apt 710,Des Moines,IA,50340,Bank of America,026009593,53794738347,Savings,03/07/2025,Standard
+CUST-10055,Lisa,Chen,06/22/1987,457-04-6798,lisa.chen83@mail.com,(255) 605-9224,3371 College Ave,San Francisco,CA,94104,KeyBank,041001039,181412478261,Savings,01/18/2024,Premium
+CUST-10056,Elizabeth,White,12/17/1969,320-20-8992,elizabeth.white84@aol.com,(945) 823-9647,3778 Main St,San Antonio,TX,78246,US Bank,091000019,047277901,Checking,03/09/2024,Standard
+CUST-10057,Ashley,Martin,05/16/1984,291-86-1403,ashley.martin9@yahoo.com,(737) 569-2108,2096 Oak Ave Apt 655,Minneapolis,MN,55430,USAA,314074269,808932460953,Savings,06/22/2024,Standard
+CUST-10058,Ronald,Volkov,05/16/1977,758-23-7613,ronald.volkov96@gmail.com,(913) 690-3986,7802 Oak Ave,Portland,OR,97217,KeyBank,041001039,53195205,Savings,05/19/2023,Standard
+CUST-10059,Jennifer,Jackson,06/14/1986,495-44-3061,jennifer.jackson40@protonmail.com,(709) 908-9151,3402 Oak Ave,Chicago,IL,60621,Ally Bank,124003116,40345054156,Checking,01/12/2024,Standard
+CUST-10060,Elizabeth,Campbell,02/11/1987,143-94-5777,elizabeth.campbell38@aol.com,(830) 645-5498,7055 Maple Dr,Jacksonville,FL,32235,Citibank,021000089,54479627,Checking,10/16/2024,Standard
+CUST-10061,Edward,White,04/12/1980,480-57-1260,edward.white19@mail.com,(788) 340-9674,8506 College Ave,Austin,TX,78702,Bank of America,026009593,135569092,Checking,01/11/2024,Standard
+CUST-10062,Kimberly,Thomas,12/07/1986,189-88-5237,kimberly.thomas50@yahoo.com,(884) 555-2063,1958 Main St,Fresno,CA,93734,BB&T,053101121,7394731217,Savings,07/17/2024,Standard
+CUST-10063,Donna,Okafor,12/06/1988,664-17-1413,donna.okafor23@aol.com,(268) 516-7523,2680 Meadow Dr,Anchorage,AK,99541,Navy Federal,256074974,132370589,Checking,01/04/2025,Premium
+CUST-10064,Fatima,Clark,09/23/1960,411-22-2654,fatima.clark83@yahoo.com,(531) 926-4694,6808 Church St,Dallas,TX,75221,Huntington,044000024,85289226801,Savings,12/21/2023,Standard
+CUST-10065,Elizabeth,Taylor,04/15/1954,146-83-9450,elizabeth.taylor81@icloud.com,(472) 866-4453,3316 Valley Rd,Seattle,WA,98109,Goldman Sachs,124085024,182992299590,Checking,02/24/2025,Standard
+CUST-10066,Svetlana,Green,04/21/1965,448-78-2354,svetlana.green83@icloud.com,(521) 935-6231,596 Lake Shore Dr,Kansas City,MO,64119,USAA,314074269,647102767,Checking,01/21/2025,Enterprise
+CUST-10067,Sarah,Carter,01/21/1975,294-98-2611,sarah.carter60@yahoo.com,(728) 678-9171,6170 River Rd,Oklahoma City,OK,73116,BB&T,053101121,32104696325,Savings,11/12/2023,Standard
+CUST-10068,Richard,Sanchez,03/06/1983,474-06-6564,richard.sanchez46@gmail.com,(253) 783-4189,8381 Sunset Blvd,Columbus,OH,43238,Bank of America,026009593,7974801624,Checking,01/07/2024,Standard
+CUST-10069,Barbara,Harris,01/04/1983,612-06-0743,barbara.harris88@yahoo.com,(240) 340-6456,8361 Sunset Blvd,Seattle,WA,98140,US Bank,091000019,65585239,Savings,04/30/2024,Standard
+CUST-10070,Karen,Hill,09/19/1976,789-15-6825,karen.hill21@protonmail.com,(798) 515-1436,8546 Elm St,Minneapolis,MN,55421,Goldman Sachs,124085024,9588879470,Checking,09/03/2024,Standard
+CUST-10071,Keisha,Torres,04/17/1965,520-65-7727,keisha.torres81@protonmail.com,(954) 944-2020,3828 Summit Ave Apt 492,Austin,TX,78734,US Bank,091000019,091307562,Checking,12/23/2024,Premium
+CUST-10072,Raj,Lee,08/06/1965,806-91-8012,raj.lee69@aol.com,(525) 691-6714,7937 River Rd,Jacksonville,FL,32230,Ally Bank,124003116,4973348434,Checking,07/27/2024,Premium
+CUST-10073,Emily,Davis,04/29/1971,675-90-4451,emily.davis99@outlook.com,(341) 311-4920,9495 Orchard Ln,Memphis,TN,38123,SunTrust,061000104,41574733,Savings,09/06/2023,Standard
+CUST-10074,Donald,Brown,05/07/1950,279-54-2881,donald.brown88@outlook.com,(238) 606-9116,1741 Highland Dr,Tucson,AZ,85707,Chase,021000021,267734540193,Savings,07/10/2023,Premium
+CUST-10075,Jennifer,Smith,04/30/1964,279-79-6644,jennifer.smith59@mail.com,(638) 727-6372,4988 Commerce Blvd,El Paso,TX,79919,US Bank,091000019,743152742054,Savings,03/30/2023,Standard
+CUST-10076,Matthew,Rodriguez,07/11/1974,263-52-8234,matthew.rodriguez50@hotmail.com,(921) 988-6095,7922 Park Ave,New York,NY,10017,Huntington,044000024,5499045301,Checking,12/07/2024,Standard
+CUST-10077,Melissa,Flores,07/16/1952,660-65-3313,melissa.flores59@aol.com,(787) 749-3455,3718 Birch Way,Tucson,AZ,85710,M&T Bank,022000046,783391878519,Checking,06/18/2023,Enterprise
+CUST-10078,Jessica,Baker,10/30/1969,103-96-3571,jessica.baker58@gmail.com,(793) 274-1742,3465 Meadow Dr,Philadelphia,PA,19133,Huntington,044000024,867908740,Checking,03/09/2024,Enterprise
+CUST-10079,Miguel,Brown,04/06/1982,641-17-3649,miguel.brown24@outlook.com,(204) 974-1372,1230 Washington Blvd,Denver,CO,80227,M&T Bank,022000046,6766182512,Savings,11/02/2023,Standard
+CUST-10080,Mei,Harris,12/20/1950,511-57-3840,mei.harris25@yahoo.com,(753) 422-1924,3862 Birch Way,San Jose,CA,95118,Bank of America,026009593,90331190790,Savings,05/24/2023,Standard
+CUST-10081,Sandra,Chen,11/13/1996,607-07-5643,sandra.chen42@hotmail.com,(859) 887-7244,9538 Park Ave,Des Moines,IA,50344,SunTrust,061000104,836440892,Checking,06/21/2024,Enterprise
+CUST-10082,Rebecca,Martinez,02/03/1954,560-48-1515,rebecca.martinez29@icloud.com,(749) 941-4120,5013 Market St Apt 551,Tucson,AZ,85716,US Bank,091000019,08668826343,Checking,02/22/2023,Enterprise
+CUST-10083,Ines,Hill,08/01/1982,345-71-5270,ines.hill93@hotmail.com,(490) 589-8639,747 Spring St Apt 824,Boise,ID,83738,USAA,314074269,540331739,Savings,06/30/2024,Premium
+CUST-10084,Donna,Taylor,05/25/1999,693-93-6842,donna.taylor93@mail.com,(503) 356-4214,5992 River Rd,Albuquerque,NM,87107,Fifth Third,042000314,556093204,Savings,12/04/2023,Premium
+CUST-10085,Tatiana,Washington,05/09/1951,882-01-6757,tatiana.washington33@mail.com,(341) 845-4791,4126 Lake Shore Dr,Honolulu,HI,96822,USAA,314074269,25228728080,Checking,03/11/2023,Premium
+CUST-10086,James,Wilson,09/20/1972,117-65-7055,james.wilson86@mail.com,(384) 309-2578,8385 Sunset Blvd,Minneapolis,MN,55441,USAA,314074269,08860084,Savings,06/20/2024,Premium
+CUST-10087,Anthony,Flores,09/14/1989,157-82-0155,anthony.flores51@yahoo.com,(920) 375-2354,8725 Spruce Ct,Seattle,WA,98151,KeyBank,041001039,79334101666,Savings,05/26/2024,Standard
+CUST-10088,Tatiana,Okafor,08/31/1999,247-97-6526,tatiana.okafor28@mail.com,(279) 506-3661,1662 Franklin Ave,Chicago,IL,60615,BB&T,053101121,14890250,Savings,07/31/2024,Premium
+CUST-10089,Mei,Perez,08/28/1949,749-35-7382,mei.perez11@aol.com,(703) 433-6829,6388 Harbor Way,Anchorage,AK,99547,Bank of America,026009593,63159996,Checking,07/20/2024,Standard
+CUST-10090,Nancy,Baker,06/20/1947,415-57-5897,nancy.baker38@hotmail.com,(980) 476-2674,9698 Orchard Ln,Des Moines,IA,50340,Wells Fargo,121000248,42626551,Checking,05/16/2023,Standard
+CUST-10091,Jeffrey,Lewis,03/13/1997,348-74-8538,jeffrey.lewis12@aol.com,(374) 901-7237,9225 Mountain View Terrace,San Antonio,TX,78202,Ally Bank,124003116,99560466,Checking,06/23/2023,Premium
+CUST-10092,Donna,Moore,07/02/1982,440-80-6225,donna.moore39@mail.com,(538) 650-6484,8179 Elm St Apt 446,Seattle,WA,98127,Wells Fargo,121000248,4379937124,Checking,03/16/2024,Premium
+CUST-10093,Kenneth,Lee,05/31/1949,844-60-3435,kenneth.lee41@icloud.com,(649) 498-2133,9983 Meadow Dr Apt 322,Jacksonville,FL,32226,USAA,314074269,356465193982,Savings,02/23/2024,Premium
+CUST-10094,Sarah,Green,04/02/2004,187-14-4068,sarah.green55@protonmail.com,(874) 880-6816,5061 Birch Way,San Jose,CA,95146,Wells Fargo,121000248,97968868058,Savings,06/20/2023,Premium
+CUST-10095,Wei,Adams,10/21/1999,807-65-2470,wei.adams2@yahoo.com,(554) 225-8909,6647 Harbor Way,Baltimore,MD,21207,BB&T,053101121,888993756,Checking,04/18/2023,Enterprise
+CUST-10096,Elizabeth,Davis,11/18/1968,628-23-9043,elizabeth.davis27@mail.com,(364) 538-7985,2421 Broadway,Albuquerque,NM,87151,KeyBank,041001039,17751401051,Savings,04/18/2024,Premium
+CUST-10097,Nancy,Lopez,03/30/1976,301-59-1868,nancy.lopez76@protonmail.com,(469) 886-9019,7180 Market St Apt 629,Fort Worth,TX,76129,Regions,062000019,33419182,Checking,06/24/2024,Premium
+CUST-10098,Ines,Harris,07/04/2000,241-74-6287,ines.harris23@icloud.com,(634) 390-8973,6531 Commerce Blvd Apt 361,Albuquerque,NM,87140,Goldman Sachs,124085024,125134125286,Checking,10/12/2024,Standard
+CUST-10099,Raj,Hernandez,06/01/1954,678-04-3614,raj.hernandez7@aol.com,(500) 233-5503,8122 Willow Ln Apt 323,Milwaukee,WI,53240,Chase,021000021,23688767677,Savings,08/19/2023,Standard
+CUST-10100,Lisa,Roberts,03/09/1956,853-84-4056,lisa.roberts71@yahoo.com,(505) 233-8368,7592 Commerce Blvd,Des Moines,IA,50332,Discover Bank,031100649,48580783,Checking,09/27/2023,Enterprise
