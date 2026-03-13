@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "outDir": "dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "paths": {
+      "@shared/*": ["shared/*"],
+      "@gateway/*": ["gateway/*"],
+      "@onboarding/*": ["onboarding/*"],
+      "@payments/*": ["payments/*"],
+      "@compliance/*": ["compliance/*"],
+      "@customers/*": ["customers/*"],
+      "@dashboard/*": ["dashboard/*"]
+    },
+    "baseUrl": "."
+  },
+  "include": [
+    "shared/**/*.ts",
+    "gateway/**/*.ts",
+    "onboarding/**/*.ts",
+    "payments/**/*.ts",
+    "compliance/**/*.ts",
+    "customers/**/*.ts",
+    "dashboard/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "**/*.test.ts",
+    "jest.config.ts"
+  ]
+}
