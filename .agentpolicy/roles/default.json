@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "version": "0.1.0",
+  "role": "default",
+  "description": "Default agent role for tasks that do not fall within a specialist domain. Minimal permissions. Operates in advisory mode.",
+  "autonomy": "advisory",
+  "paths": {
+    "read": [
+      "shared/"
+    ],
+    "write": []
+  },
+  "forbidden_actions": [
+    "Accessing any domain directory without explicit assignment to a specialist role",
+    "Modifying production code, business logic, or configuration",
+    "Accessing sensitive data of any tier",
+    "Bypassing quality gates"
+  ],
+  "escalation_triggers": [
+    "Any task that requires domain-specific access",
+    "Any ambiguity about scope or permissions"
+  ]
+}

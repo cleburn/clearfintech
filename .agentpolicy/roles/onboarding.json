@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "version": "0.1.0",
+  "role": "onboarding",
+  "description": "Merchant lifecycle orchestration: application intake, document collection, workflow state machine. Coordinates with compliance (identity verification) and payments (account provisioning) through shared interfaces only. Never performs those operations itself — it orchestrates.",
+  "autonomy": "advisory",
+  "paths": {
+    "read": [
+      "onboarding/",
+      "shared/"
+    ],
+    "write": [
+      "onboarding/"
+    ]
+  },
+  "forbidden_actions": [
+    "Reading or writing any path outside onboarding/ and shared/",
+    "Implementing identity verification logic (belongs to compliance)",
+    "Implementing payment account provisioning logic (belongs to payments)",
+    "Directly accessing compliance/ or payments/ internals",
+    "Storing or logging PII outside of tokenized interfaces"
+  ],
+  "conventions": {
+    "testing": "unit-and-integration-tests-required",
+    "audit_trail": "required-for-all-merchant-lifecycle-operations"
+  },
+  "escalation_triggers": [
+    "Changes to cross-domain orchestration flow",
+    "Changes to shared interface contracts",
+    "Any new integration with compliance or payments"
+  ]
+}

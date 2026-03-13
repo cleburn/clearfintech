@@ -1,0 +1,133 @@
+{
+  "$schema": "https://schema.aegis.dev/governance.v0.1.0.json",
+  "version": "0.1.0",
+  "autonomy": {
+    "default_level": "advisory",
+    "levels": {
+      "full": {
+        "description": "Agent may execute without human approval. Reserved for routine operations within a single domain that do not touch sensitive data or cross boundaries."
+      },
+      "advisory": {
+        "description": "Agent proposes changes and waits for human approval before executing. Default level for most operations."
+      },
+      "restricted": {
+        "description": "Agent must escalate before taking any action. Required for compliance-adjacent changes, cross-domain modifications, and any operation involving restricted-tier data."
+      }
+    },
+    "domain_overrides": {
+      "compliance": "restricted",
+      "customers": "restricted",
+      "payments": "advisory",
+      "onboarding": "advisory",
+      "gateway": "advisory",
+      "dashboard": "advisory",
+      "qa": "advisory",
+      "shared": "advisory"
+    }
+  },
+  "escalation": {
+    "target": "human",
+    "human_identity": "project-owner",
+    "triggers": [
+      "Any action that may expose PII in any form",
+      "Any action that would skip or weaken an audit trail",
+      "Any action that would store data unencrypted, even temporarily",
+      "Any cross-domain boundary question or ambiguity",
+      "Any change to compliance domain logic or data",
+      "Any change to customers domain logic or data",
+      "Any modification to sensitivity tier classification or handling rules",
+      "Any modification to shared/interfaces contracts",
+      "Any uncertainty about whether an operation is compliant",
+      "Encountering data of unknown sensitivity",
+      "Any request to override or bypass quality gates",
+      "Any architectural decision that affects domain boundaries"
+    ],
+    "behavior": "Agent stops immediately, documents the concern with full context, and waits for explicit human direction. No proceeding on best-guess."
+  },
+  "quality_gates": {
+    "override_authority": "none",
+    "description": "No person or agent may override or bypass quality gates. All gates must pass before any change ships.",
+    "gates": [
+      {
+        "name": "tests",
+        "scope": "all",
+        "required": true,
+        "description": "All tests must pass. No exceptions."
+      },
+      {
+        "name": "lint",
+        "scope": "all",
+        "required": true,
+        "description": "Linting must pass. No exceptions."
+      },
+      {
+        "name": "typecheck",
+        "scope": "all",
+        "required": true,
+        "description": "Type checking must pass. No exceptions."
+      },
+      {
+        "name": "unit-tests",
+        "scope": "all",
+        "required": true,
+        "description": "Every change that adds behavior must add corresponding unit tests."
+      },
+      {
+        "name": "integration-tests",
+        "scope": [
+          "payments",
+          "compliance",
+          "customers",
+          "onboarding",
+          "gateway"
+        ],
+        "required": true,
+        "description": "Regulated domains require both unit and integration tests on every change."
+      },
+      {
+        "name": "audit-trail-verification",
+        "scope": [
+          "payments",
+          "compliance",
+          "customers",
+          "onboarding"
+        ],
+        "required": true,
+        "description": "Any change touching financial data or PII must have a corresponding audit log entry. Missing audit trail coverage is a hard failure."
+      },
+      {
+        "name": "qa-signoff",
+        "scope": "all",
+        "required": true,
+        "description": "QA agent must validate and sign off before any change ships. No exceptions."
+      }
+    ]
+  },
+  "cross_domain_rules": {
+    "communication_method": "shared-interfaces-only",
+    "shared_interfaces_path": "shared/interfaces/",
+    "violations": {
+      "direct_import_across_domains": "hard-block",
+      "direct_database_access_across_domains": "hard-block",
+      "bypassing_tokenization_for_pii": "hard-block",
+      "fincen_data_outside_compliance": "hard-block"
+    },
+    "description": "Cross-domain communication happens exclusively through typed contracts in shared/interfaces/. Direct imports from one domain's internals to another are a hard violation. No domain may directly access another domain's database or data store."
+  },
+  "data_directory_policy": {
+    "path": "data/",
+    "access": "customers-domain-only",
+    "migration_target": "customers/data/",
+    "migration_status": "flagged-for-migration",
+    "treatment": "production-grade-handling-rules",
+    "description": "Seed data directory currently at repo root. Locked to customers domain access only. Flagged for migration into customers/data/ once domain structure is stood up. All seed data treated with production-grade structural rules."
+  },
+  "build_commands": {
+    "install": "npm install",
+    "build": "npm run build",
+    "dev": "npm run dev",
+    "test": "npm test",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck"
+  }
+}

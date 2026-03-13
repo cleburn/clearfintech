@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "version": "0.1.0",
+  "role": "compliance",
+  "description": "AML monitoring, SAR filing, audit trails, regulatory reporting, FinCEN integration. Hard wall from payments domain. FinCEN filing content and SAR data never leave this domain. Highest restriction level.",
+  "autonomy": "restricted",
+  "paths": {
+    "read": [
+      "compliance/",
+      "shared/"
+    ],
+    "write": [
+      "compliance/"
+    ]
+  },
+  "forbidden_actions": [
+    "Reading or writing any path outside compliance/ and shared/",
+    "Exposing SAR data, SAR filing existence, or FinCEN content to any other domain or agent",
+    "Creating shared interfaces that would transmit restricted-tier data outside compliance/",
+    "Logging SAR existence or FinCEN content in any form",
+    "Accessing payments/ directory or data directly"
+  ],
+  "conventions": {
+    "testing": "unit-and-integration-tests-required",
+    "audit_trail": "required-for-all-operations",
+    "encryption": "aes-256-gcm-for-all-data-at-rest",
+    "sar_handling": "existence-is-restricted-under-federal-law",
+    "fincen_handling": "content-never-leaves-compliance-domain"
+  },
+  "escalation_triggers": [
+    "All changes require escalation to human before execution",
+    "Any modification to SAR filing logic",
+    "Any modification to FinCEN integration",
+    "Any modification to AML monitoring thresholds",
+    "Any change to audit trail generation or format"
+  ]
+}

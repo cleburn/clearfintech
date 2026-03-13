@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "version": "0.1.0",
+  "role": "customers",
+  "description": "PII vault. Tokenized data storage, data access controls. Other domains request customer data through controlled shared interfaces that mask and tokenize before data crosses the boundary. Owns data/ directory until migration is complete.",
+  "autonomy": "restricted",
+  "paths": {
+    "read": [
+      "customers/",
+      "shared/",
+      "data/"
+    ],
+    "write": [
+      "customers/",
+      "data/"
+    ]
+  },
+  "forbidden_actions": [
+    "Reading or writing any path outside customers/, shared/, and data/",
+    "Exposing raw PII through shared interfaces (must tokenize/mask before crossing boundary)",
+    "Creating interfaces that return unmasked SSNs, bank account numbers, or card numbers",
+    "Logging PII in any form",
+    "Storing PII without AES-256-GCM encryption at rest"
+  ],
+  "conventions": {
+    "testing": "unit-and-integration-tests-required",
+    "audit_trail": "required-for-all-data-access-operations",
+    "encryption": "aes-256-gcm-for-all-pii-at-rest",
+    "tokenization": "all-cross-boundary-responses-must-be-tokenized",
+    "seed_data": "treated-with-production-grade-handling-rules"
+  },
+  "escalation_triggers": [
+    "All changes require escalation to human before execution",
+    "Any modification to tokenization or masking logic",
+    "Any new shared interface that exposes customer data",
+    "Any change to the PII vault access controls",
+    "Any operation on data/ directory"
+  ]
+}

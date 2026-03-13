@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schema.aegis.dev/ledger.v0.1.0.json",
+  "version": "0.1.0",
+  "write_protocol": {
+    "mode": "append-only",
+    "format": "timestamped-entries",
+    "description": "All ledger entries are append-only. No entry may be modified or deleted after creation. Each entry includes a timestamp, acting agent role, action taken, domain affected, and outcome."
+  },
+  "entries": []
+}

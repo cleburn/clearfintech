@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "version": "0.1.0",
+  "role": "gateway",
+  "description": "Owns the unified API entry point: routing, authentication middleware, rate limiting. Single front door for all external requests.",
+  "autonomy": "advisory",
+  "paths": {
+    "read": [
+      "gateway/",
+      "shared/"
+    ],
+    "write": [
+      "gateway/"
+    ]
+  },
+  "forbidden_actions": [
+    "Reading or writing any path outside gateway/ and shared/",
+    "Implementing business logic that belongs in other domains",
+    "Logging or exposing sensitive data from request payloads",
+    "Bypassing authentication or rate limiting for convenience"
+  ],
+  "conventions": {
+    "testing": "unit-and-integration-tests-required"
+  },
+  "escalation_triggers": [
+    "Changes to authentication or authorization logic",
+    "Changes to rate limiting configuration",
+    "Any routing change that could affect domain boundary enforcement"
+  ]
+}

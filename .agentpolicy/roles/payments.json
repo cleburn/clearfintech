@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "version": "0.1.0",
+  "role": "payments",
+  "description": "Transaction lifecycle: authorization, capture, settlement, reconciliation. Hard wall from compliance domain. Accesses merchant and customer data only through tokenized shared interfaces.",
+  "autonomy": "advisory",
+  "paths": {
+    "read": [
+      "payments/",
+      "shared/"
+    ],
+    "write": [
+      "payments/"
+    ]
+  },
+  "forbidden_actions": [
+    "Reading or writing any path outside payments/ and shared/",
+    "Accessing compliance/ directory or data in any form",
+    "Accessing customers/ directory or data directly (must use tokenized shared interfaces)",
+    "Storing raw card numbers, bank account numbers, or routing numbers outside encrypted vault patterns",
+    "Logging any high-tier or restricted-tier sensitive data",
+    "Skipping audit trail entries for financial operations"
+  ],
+  "conventions": {
+    "testing": "unit-and-integration-tests-required",
+    "audit_trail": "required-for-all-financial-operations",
+    "encryption": "aes-256-gcm-for-all-financial-data-at-rest"
+  },
+  "escalation_triggers": [
+    "Any change to settlement or reconciliation logic",
+    "Any change that affects financial data handling",
+    "Any interaction pattern with compliance data, even indirect"
+  ]
+}
