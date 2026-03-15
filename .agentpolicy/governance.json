@@ -1,22 +1,32 @@
 {
-  "$schema": "https://schema.aegis.dev/governance.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/governance.v0.1.0.json",
   "version": "0.1.0",
   "autonomy": {
     "default_level": "advisory",
     "levels": {
-      "full": {
+      "delegated": {
         "description": "Agent may execute without human approval. Reserved for routine operations within a single domain that do not touch sensitive data or cross boundaries."
       },
       "advisory": {
         "description": "Agent proposes changes and waits for human approval before executing. Default level for most operations."
       },
-      "restricted": {
+      "conservative": {
         "description": "Agent must escalate before taking any action. Required for compliance-adjacent changes, cross-domain modifications, and any operation involving restricted-tier data."
       }
     },
+    "domains": {
+      "compliance": "conservative",
+      "customers": "conservative",
+      "payments": "advisory",
+      "onboarding": "advisory",
+      "gateway": "advisory",
+      "dashboard": "advisory",
+      "qa": "advisory",
+      "shared": "advisory"
+    },
     "domain_overrides": {
-      "compliance": "restricted",
-      "customers": "restricted",
+      "compliance": "conservative",
+      "customers": "conservative",
       "payments": "advisory",
       "onboarding": "advisory",
       "gateway": "advisory",
@@ -25,7 +35,48 @@
       "shared": "advisory"
     }
   },
+  "permissions": {
+    "boundaries": {
+      "writable": [
+        "gateway/",
+        "onboarding/",
+        "payments/",
+        "compliance/",
+        "customers/",
+        "dashboard/",
+        "shared/",
+        "qa/reports/",
+        "data/"
+      ],
+      "read_only": [
+        "qa/",
+        ".agentpolicy/"
+      ],
+      "forbidden": []
+    },
+    "sensitive_patterns": [
+      {
+        "pattern": "*.pem",
+        "reason": "Encryption keys — restricted or high-tier sensitive data"
+      },
+      {
+        "pattern": "*.key",
+        "reason": "Encryption keys — restricted or high-tier sensitive data"
+      },
+      {
+        "pattern": ".env*",
+        "reason": "May contain secrets, JWT keys, database credentials"
+      },
+      {
+        "pattern": "data/**",
+        "reason": "Seed data treated with production-grade handling rules — may contain PII-structured data"
+      }
+    ]
+  },
   "escalation": {
+    "on_ambiguity": "stop_and_ask",
+    "on_conflict": "stop_and_ask",
+    "on_scope_boundary": "stop_and_ask",
     "target": "human",
     "human_identity": "project-owner",
     "triggers": [
@@ -44,7 +95,14 @@
     ],
     "behavior": "Agent stops immediately, documents the concern with full context, and waits for explicit human direction. No proceeding on best-guess."
   },
-  "quality_gates": {
+  "quality_gate": {
+    "pre_commit": {
+      "must_pass_tests": true,
+      "must_pass_lint": true,
+      "must_pass_typecheck": true,
+      "must_add_tests": true,
+      "must_update_docs": false
+    },
     "override_authority": "none",
     "description": "No person or agent may override or bypass quality gates. All gates must pass before any change ships.",
     "gates": [
@@ -103,6 +161,59 @@
       }
     ]
   },
+  "conventions": [
+    {
+      "id": "integer-cents-arithmetic",
+      "scope": "all",
+      "rule": "All financial calculations must use integer arithmetic in cents. Never use floating point for monetary values. Store, transmit, and compute money as integer cents.",
+      "enforcement": "strict"
+    },
+    {
+      "id": "cross-domain-shared-interfaces",
+      "scope": "all",
+      "rule": "Cross-domain communication happens exclusively through typed contracts in shared/interfaces/. Direct imports from one domain's internals to another are a hard violation.",
+      "enforcement": "strict"
+    },
+    {
+      "id": "pii-tokenization-at-boundary",
+      "scope": "customers",
+      "rule": "All PII must be tokenized or masked before crossing the customers domain boundary via shared interfaces.",
+      "enforcement": "strict"
+    },
+    {
+      "id": "audit-trail-for-financial-pii",
+      "scope": "payments,compliance,customers,onboarding",
+      "rule": "Every operation touching financial data or PII must produce a corresponding audit log entry.",
+      "enforcement": "strict"
+    },
+    {
+      "id": "no-sensitive-data-in-logs",
+      "scope": "all",
+      "rule": "Sensitive data (PII, card numbers, SSNs, bank accounts, routing numbers, encryption keys, JWT secrets, tax IDs, EINs, SAR data, FinCEN content) must never appear in logs, error messages, API responses, or code comments.",
+      "enforcement": "strict"
+    },
+    {
+      "id": "machine-readable-code-style",
+      "scope": "all",
+      "rule": "Code conventions prioritize machine readability first. Verbose over clever, flat over nested, obvious over elegant.",
+      "enforcement": "preferred"
+    }
+  ],
+  "override_protocol": {
+    "behavior": "block_and_log",
+    "log_path": ".agentpolicy/state/overrides.jsonl",
+    "immutable_policies": [
+      "integer-arithmetic-for-financials",
+      "compliance-supremacy",
+      "domain-separation",
+      "audit-trail-completeness",
+      "sensitive-data-protection",
+      "cross-domain-interfaces-only",
+      "quality-gates-absolute",
+      "seed-data-as-production",
+      "ask-before-accessing-sensitive"
+    ]
+  },
   "cross_domain_rules": {
     "communication_method": "shared-interfaces-only",
     "shared_interfaces_path": "shared/interfaces/",
@@ -121,13 +232,5 @@
     "migration_status": "flagged-for-migration",
     "treatment": "production-grade-handling-rules",
     "description": "Seed data directory currently at repo root. Locked to customers domain access only. Flagged for migration into customers/data/ once domain structure is stood up. All seed data treated with production-grade structural rules."
-  },
-  "build_commands": {
-    "install": "npm install",
-    "build": "npm run build",
-    "dev": "npm run dev",
-    "test": "npm test",
-    "lint": "npm run lint",
-    "typecheck": "npm run typecheck"
   }
 }

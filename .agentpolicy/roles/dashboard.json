@@ -1,8 +1,27 @@
 {
-  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
   "version": "0.1.0",
-  "role": "dashboard",
-  "description": "Merchant portal. Only receives tokenized or masked data. No access to raw PII, raw financial data, or customer bank information. Consumes data exclusively through shared interfaces.",
+  "role": {
+    "name": "dashboard",
+    "purpose": "Merchant portal. Only receives tokenized or masked data. No access to raw PII, raw financial data, or customer bank information. Consumes data exclusively through shared interfaces."
+  },
+  "scope": {
+    "primary_paths": [
+      "dashboard/"
+    ],
+    "secondary_paths": [
+      "shared/"
+    ],
+    "excluded_paths": [
+      "gateway/",
+      "onboarding/",
+      "payments/",
+      "compliance/",
+      "customers/",
+      "qa/",
+      "data/"
+    ]
+  },
   "autonomy": "advisory",
   "paths": {
     "read": [

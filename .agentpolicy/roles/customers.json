@@ -1,9 +1,28 @@
 {
-  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
   "version": "0.1.0",
-  "role": "customers",
-  "description": "PII vault. Tokenized data storage, data access controls. Other domains request customer data through controlled shared interfaces that mask and tokenize before data crosses the boundary. Owns data/ directory until migration is complete.",
-  "autonomy": "restricted",
+  "role": {
+    "name": "customers",
+    "purpose": "PII vault. Tokenized data storage, data access controls. Other domains request customer data through controlled shared interfaces that mask and tokenize before data crosses the boundary. Owns data/ directory until migration is complete."
+  },
+  "scope": {
+    "primary_paths": [
+      "customers/",
+      "data/"
+    ],
+    "secondary_paths": [
+      "shared/"
+    ],
+    "excluded_paths": [
+      "gateway/",
+      "onboarding/",
+      "payments/",
+      "compliance/",
+      "dashboard/",
+      "qa/"
+    ]
+  },
+  "autonomy": "conservative",
   "paths": {
     "read": [
       "customers/",

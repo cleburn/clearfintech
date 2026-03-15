@@ -1,8 +1,25 @@
 {
-  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
   "version": "0.1.0",
-  "role": "default",
-  "description": "Default agent role for tasks that do not fall within a specialist domain. Minimal permissions. Operates in advisory mode.",
+  "role": {
+    "name": "default",
+    "purpose": "Default agent role for tasks that do not fall within a specialist domain. Minimal permissions. Operates in advisory mode."
+  },
+  "scope": {
+    "primary_paths": [
+      "shared/"
+    ],
+    "excluded_paths": [
+      "gateway/",
+      "onboarding/",
+      "payments/",
+      "compliance/",
+      "customers/",
+      "dashboard/",
+      "qa/",
+      "data/"
+    ]
+  },
   "autonomy": "advisory",
   "paths": {
     "read": [

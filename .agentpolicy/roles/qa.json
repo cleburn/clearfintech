@@ -1,8 +1,26 @@
 {
-  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
   "version": "0.1.0",
-  "role": "qa",
-  "description": "Audit function. Read access to all domains. Write access only to qa/reports/ (append-only). Validates that no agent worked outside its lane, checks cross-domain handoffs followed protocol, runs the final compliance gate before anything ships. Eyes on everything, hands on nothing. If QA doesn't sign off, nothing goes out.",
+  "role": {
+    "name": "qa",
+    "purpose": "Audit function. Read access to all domains. Write access only to qa/reports/ (append-only). Validates that no agent worked outside its lane, checks cross-domain handoffs followed protocol, runs the final compliance gate before anything ships. Eyes on everything, hands on nothing. If QA doesn't sign off, nothing goes out."
+  },
+  "scope": {
+    "primary_paths": [
+      "qa/reports/"
+    ],
+    "secondary_paths": [
+      "gateway/",
+      "onboarding/",
+      "payments/",
+      "compliance/",
+      "customers/",
+      "dashboard/",
+      "shared/",
+      "qa/",
+      "data/"
+    ]
+  },
   "autonomy": "advisory",
   "paths": {
     "read": [

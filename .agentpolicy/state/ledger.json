@@ -1,10 +1,37 @@
 {
-  "$schema": "https://schema.aegis.dev/ledger.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/ledger.v0.1.0.json",
   "version": "0.1.0",
+  "sequence": 0,
+  "tasks": [],
   "write_protocol": {
     "mode": "append-only",
     "format": "timestamped-entries",
+    "lock_file": ".agentpolicy/state/ledger.lock",
+    "lock_timeout_seconds": 120,
+    "retry_interval_ms": 500,
+    "max_retries": 10,
+    "procedure": [
+      {
+        "step": 1,
+        "action": "Read current ledger and note sequence number"
+      },
+      {
+        "step": 2,
+        "action": "Attempt to create lock file. If exists and not stale, wait and retry"
+      },
+      {
+        "step": 3,
+        "action": "Re-read ledger. If sequence changed, release lock and restart"
+      },
+      {
+        "step": 4,
+        "action": "Write changes, increment sequence"
+      },
+      {
+        "step": 5,
+        "action": "Release lock file"
+      }
+    ],
     "description": "All ledger entries are append-only. No entry may be modified or deleted after creation. Each entry includes a timestamp, acting agent role, action taken, domain affected, and outcome."
-  },
-  "entries": []
+  }
 }

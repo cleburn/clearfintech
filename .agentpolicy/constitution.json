@@ -1,9 +1,11 @@
 {
-  "$schema": "https://schema.aegis.dev/constitution.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/constitution.v0.1.0.json",
   "version": "0.1.0",
   "project": {
     "name": "clearfintech",
+    "purpose": "Payment processing and merchant services platform for SMBs with full regulatory compliance (PCI-DSS, SOX, AML/KYC, data privacy).",
     "description": "Payment processing and merchant services platform for SMBs with full regulatory compliance (PCI-DSS, SOX, AML/KYC, data privacy).",
+    "architecture": "monorepo",
     "languages": [
       "typescript"
     ],
@@ -15,6 +17,60 @@
       "encryption": "aes-256-gcm"
     },
     "repo_structure": "monorepo",
+    "module_map": [
+      {
+        "path": "gateway/",
+        "purpose": "Unified API entry point. Owns routing, authentication middleware, and rate limiting.",
+        "owner": "gateway"
+      },
+      {
+        "path": "onboarding/",
+        "purpose": "Merchant lifecycle orchestration. Application intake, document collection, workflow state machine. Calls compliance for identity verification and payments for account provisioning. Never performs those operations itself.",
+        "owner": "onboarding"
+      },
+      {
+        "path": "payments/",
+        "purpose": "Transaction lifecycle: authorization, capture, settlement, reconciliation. Hard wall from compliance domain.",
+        "owner": "payments"
+      },
+      {
+        "path": "compliance/",
+        "purpose": "AML monitoring, SAR filing, audit trails, regulatory reporting, FinCEN integration. Hard wall from payments domain. FinCEN filing content and SAR data never leave this domain.",
+        "owner": "compliance"
+      },
+      {
+        "path": "customers/",
+        "purpose": "PII vault. Tokenized data storage, data access controls. Other domains access customer data only through controlled shared interfaces that mask and tokenize before data crosses the boundary.",
+        "owner": "customers"
+      },
+      {
+        "path": "dashboard/",
+        "purpose": "Merchant portal. Only ever receives tokenized or masked data. No access to raw PII, financial data, or customer bank information.",
+        "owner": "dashboard"
+      },
+      {
+        "path": "shared/",
+        "purpose": "Types, interfaces, and constants. No business logic, no data access. The only legal crossing point between domains.",
+        "owner": "default"
+      },
+      {
+        "path": "qa/",
+        "purpose": "QA reports and validation findings. Append-only. Preserved as audit evidence.",
+        "owner": "qa"
+      },
+      {
+        "path": "data/",
+        "purpose": "Seed data directory. Locked to customers domain access only. Flagged for migration to customers/data/ once domain structure is stood up. Synthetic data treated with production-grade handling rules.",
+        "owner": "customers"
+      }
+    ],
+    "required_artifacts": [
+      {
+        "path": "README.md",
+        "purpose": "Project documentation and setup instructions.",
+        "source": "manual"
+      }
+    ],
     "domains": [
       {
         "name": "gateway",
@@ -63,62 +119,106 @@
       }
     ]
   },
+  "tech_stack": {
+    "languages": [
+      "typescript"
+    ],
+    "runtime": "node-20",
+    "database": "postgresql",
+    "cache": "redis",
+    "auth": "jwt",
+    "encryption": "aes-256-gcm"
+  },
   "principles": [
     {
-      "id": "compliance-supremacy",
+      "name": "integer-arithmetic-for-financials",
+      "id": "integer-arithmetic-for-financials",
       "priority": 1,
+      "statement": "All financial calculations must be performed using integer arithmetic in cents, never floating point. Floating point arithmetic for financial values is a hard violation.",
+      "text": "All financial calculations must be performed using integer arithmetic in cents, never floating point. Floating point arithmetic for financial values is a hard violation.",
+      "enforcement": "hard"
+    },
+    {
+      "name": "compliance-supremacy",
+      "id": "compliance-supremacy",
+      "priority": 2,
+      "statement": "Compliance wins over everything, always, with no exceptions. There is no scenario where speed, convenience, or feature velocity overrides a compliance requirement. If the fastest path risks exposing PII, skipping an audit trail, or storing data unencrypted even temporarily, that path does not exist. The agent stops, flags it, and waits for human direction.",
       "text": "Compliance wins over everything, always, with no exceptions. There is no scenario where speed, convenience, or feature velocity overrides a compliance requirement. If the fastest path risks exposing PII, skipping an audit trail, or storing data unencrypted even temporarily, that path does not exist. The agent stops, flags it, and waits for human direction.",
       "enforcement": "hard"
     },
     {
+      "name": "domain-separation",
       "id": "domain-separation",
-      "priority": 2,
+      "priority": 3,
+      "statement": "Domain boundaries are structural and enforced, not advisory. Payments cannot access compliance data and vice versa. Dashboard cannot access raw PII or financial data. Customers is a vault accessed only through controlled interfaces. No agent crosses domain boundaries. No two agents write in the same space at the same time.",
       "text": "Domain boundaries are structural and enforced, not advisory. Payments cannot access compliance data and vice versa. Dashboard cannot access raw PII or financial data. Customers is a vault accessed only through controlled interfaces. No agent crosses domain boundaries. No two agents write in the same space at the same time.",
       "enforcement": "hard"
     },
     {
+      "name": "audit-trail-completeness",
       "id": "audit-trail-completeness",
-      "priority": 3,
+      "priority": 4,
+      "statement": "Every operation that touches financial data or PII must have a corresponding audit log entry. Missing audit trail coverage is a failed check, not a warning. Nothing ships without complete audit trails.",
       "text": "Every operation that touches financial data or PII must have a corresponding audit log entry. Missing audit trail coverage is a failed check, not a warning. Nothing ships without complete audit trails.",
       "enforcement": "hard"
     },
     {
+      "name": "sensitive-data-protection",
       "id": "sensitive-data-protection",
-      "priority": 4,
+      "priority": 5,
+      "statement": "Sensitive data must never appear in logs, error messages, API responses, or code comments. PII, card numbers, SSNs, bank account numbers, routing numbers, encryption keys, JWT secrets, merchant tax IDs, EINs, SAR data, and FinCEN filing content are all classified and handled according to their sensitivity tier. SAR existence itself is restricted information under federal law.",
       "text": "Sensitive data must never appear in logs, error messages, API responses, or code comments. PII, card numbers, SSNs, bank account numbers, routing numbers, encryption keys, JWT secrets, merchant tax IDs, EINs, SAR data, and FinCEN filing content are all classified and handled according to their sensitivity tier. SAR existence itself is restricted information under federal law.",
       "enforcement": "hard"
     },
     {
+      "name": "cross-domain-interfaces-only",
       "id": "cross-domain-interfaces-only",
-      "priority": 5,
+      "priority": 6,
+      "statement": "Cross-domain communication happens exclusively through the shared/interfaces layer with typed contracts. No domain may import directly from another domain's internals. This is a hard violation — full stop, not a warning.",
       "text": "Cross-domain communication happens exclusively through the shared/interfaces layer with typed contracts. No domain may import directly from another domain's internals. This is a hard violation — full stop, not a warning.",
       "enforcement": "hard"
     },
     {
+      "name": "quality-gates-absolute",
       "id": "quality-gates-absolute",
-      "priority": 6,
+      "priority": 7,
+      "statement": "Tests, linting, and type checks must pass on every change. No change ships with failing checks. No one overrides the gate — not QA, not the project owner. QA agent must sign off before anything ships.",
       "text": "Tests, linting, and type checks must pass on every change. No change ships with failing checks. No one overrides the gate — not QA, not the project owner. QA agent must sign off before anything ships.",
       "enforcement": "hard"
     },
     {
+      "name": "seed-data-as-production",
       "id": "seed-data-as-production",
-      "priority": 7,
+      "priority": 8,
+      "statement": "Seed and synthetic data are treated with the same structural rules as production data. No shortcuts, no 'it's just test data' exceptions. Development habits must mirror production habits from day one.",
       "text": "Seed and synthetic data are treated with the same structural rules as production data. No shortcuts, no 'it's just test data' exceptions. Development habits must mirror production habits from day one.",
       "enforcement": "hard"
     },
     {
+      "name": "machine-readability-first",
       "id": "machine-readability-first",
-      "priority": 8,
+      "priority": 9,
+      "statement": "Code conventions prioritize machine readability first, human readability second. Verbose over clever, flat over nested, obvious over elegant. Sufficient consideration for manual auditing by the project owner, but optimized for agent execution speed and interpretation accuracy.",
       "text": "Code conventions prioritize machine readability first, human readability second. Verbose over clever, flat over nested, obvious over elegant. Sufficient consideration for manual auditing by the project owner, but optimized for agent execution speed and interpretation accuracy.",
       "enforcement": "standard"
     },
     {
+      "name": "ask-before-accessing-sensitive",
       "id": "ask-before-accessing-sensitive",
-      "priority": 9,
+      "priority": 10,
+      "statement": "When encountering data that may be sensitive and the contents are unknown, agents must stop and ask before accessing. When in doubt, do not open — escalate to the human.",
       "text": "When encountering data that may be sensitive and the contents are unknown, agents must stop and ask before accessing. When in doubt, do not open — escalate to the human.",
       "enforcement": "hard"
     }
   ],
+  "build_commands": {
+    "install": "npm install",
+    "build": "npm run build",
+    "dev": "npm run dev",
+    "test": "npm test",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck"
+  },
   "sensitivity_tiers": [
     {
       "tier": "restricted",

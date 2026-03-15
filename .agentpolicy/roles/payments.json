@@ -1,8 +1,27 @@
 {
-  "$schema": "https://schema.aegis.dev/role.v0.1.0.json",
+  "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
   "version": "0.1.0",
-  "role": "payments",
-  "description": "Transaction lifecycle: authorization, capture, settlement, reconciliation. Hard wall from compliance domain. Accesses merchant and customer data only through tokenized shared interfaces.",
+  "role": {
+    "name": "payments",
+    "purpose": "Transaction lifecycle: authorization, capture, settlement, reconciliation. Hard wall from compliance domain. Accesses merchant and customer data only through tokenized shared interfaces."
+  },
+  "scope": {
+    "primary_paths": [
+      "payments/"
+    ],
+    "secondary_paths": [
+      "shared/"
+    ],
+    "excluded_paths": [
+      "gateway/",
+      "onboarding/",
+      "compliance/",
+      "customers/",
+      "dashboard/",
+      "qa/",
+      "data/"
+    ]
+  },
   "autonomy": "advisory",
   "paths": {
     "read": [
