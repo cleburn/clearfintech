@@ -1,0 +1,1 @@
+{"timestamp":"2026-03-15T07:46:59.455Z","policy_violated":"Path \"compliance/src/test-override.ts\" is excluded for role \"payments\".","policy_text":"Path \"compliance/src/test-override.ts\" is excluded for role \"payments\".","action_requested":"write: compliance/src/test-override.ts","human_confirmed":false,"agent_role":"payments","rationale":"Blocked by enforcement layer"}
