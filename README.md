@@ -2,6 +2,8 @@
 
 Payment processing and merchant services platform built for small-to-mid-size businesses. ClearFinTech handles the financial infrastructure — payment compliance, fraud monitoring, and regulatory reporting — so merchants can focus on running their businesses.
 
+![CI](https://github.com/cleburn/clearfintech/actions/workflows/ci.yml/badge.svg)
+
 ## What It Does
 
 - **Merchant Onboarding** — Businesses submit an application, pass identity verification (KYC), receive a risk assessment, and get provisioned with a payment account. Merchants are assigned a tier (Standard, Premium, or Enterprise) based on volume and business type.
