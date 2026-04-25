@@ -1,6 +1,6 @@
 {
   "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "role": {
     "name": "default",
     "purpose": "Default agent role for tasks that do not fall within a specialist domain. Minimal permissions. Operates in advisory mode."

@@ -1,6 +1,6 @@
 {
   "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "role": {
     "name": "dashboard",
     "purpose": "Merchant portal. Only receives tokenized or masked data. No access to raw PII, raw financial data, or customer bank information. Consumes data exclusively through shared interfaces."
@@ -37,11 +37,13 @@
     "Accessing payments/, compliance/, customers/, or data/ directories",
     "Displaying raw PII, card numbers, bank account numbers, SSNs, or any high/restricted-tier data",
     "Requesting unmasked data through shared interfaces",
-    "Implementing any data decryption or de-tokenization logic"
+    "Implementing any data decryption or de-tokenization logic",
+    "Writing integration tests for own code (integration tests must come from QA)"
   ],
   "conventions": {
     "testing": "unit-tests-required",
-    "data_access": "tokenized-and-masked-only-via-shared-interfaces"
+    "data_access": "tokenized-and-masked-only-via-shared-interfaces",
+    "integration_test_authorship": "qa-only"
   },
   "escalation_triggers": [
     "Any change that introduces new data display fields (must verify sensitivity tier)",

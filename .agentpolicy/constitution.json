@@ -1,6 +1,6 @@
 {
   "$schema": "https://aegis.dev/schema/constitution.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "project": {
     "name": "clearfintech",
     "purpose": "Payment processing and merchant services platform for SMBs with full regulatory compliance (PCI-DSS, SOX, AML/KYC, data privacy).",
@@ -68,6 +68,16 @@
       {
         "path": "README.md",
         "purpose": "Project documentation and setup instructions.",
+        "source": "manual"
+      },
+      {
+        "path": "SECURITY.md",
+        "purpose": "Security policy and vulnerability disclosure. Content derived from the constitution's sensitivity tiers and principles plus the project charter.",
+        "source": "manual"
+      },
+      {
+        "path": "COMPLIANCE.md",
+        "purpose": "Compliance posture documenting PCI-DSS, SOX, AML/KYC, and data privacy handling. Content derived from the compliance sections of the README and constitution.",
         "source": "manual"
       }
     ],
@@ -182,100 +192,33 @@
       "name": "quality-gates-absolute",
       "id": "quality-gates-absolute",
       "priority": 7,
-      "statement": "Tests, linting, and type checks must pass on every change. No change ships with failing checks. No one overrides the gate — not QA, not the project owner. QA agent must sign off before anything ships.",
-      "text": "Tests, linting, and type checks must pass on every change. No change ships with failing checks. No one overrides the gate — not QA, not the project owner. QA agent must sign off before anything ships.",
+      "statement": "Quality gates are absolute. No person and no agent may override or bypass them. All gates must pass before any change ships.",
+      "text": "Quality gates are absolute. No person and no agent may override or bypass them. All gates must pass before any change ships.",
       "enforcement": "hard"
     },
     {
       "name": "seed-data-as-production",
       "id": "seed-data-as-production",
       "priority": 8,
-      "statement": "Seed and synthetic data are treated with the same structural rules as production data. No shortcuts, no 'it's just test data' exceptions. Development habits must mirror production habits from day one.",
-      "text": "Seed and synthetic data are treated with the same structural rules as production data. No shortcuts, no 'it's just test data' exceptions. Development habits must mirror production habits from day one.",
+      "statement": "Seed data and synthetic data are treated with production-grade handling rules. The data/ directory is locked to customers domain access only and flagged for migration to customers/data/ once domain structure is stood up.",
+      "text": "Seed data and synthetic data are treated with production-grade handling rules. The data/ directory is locked to customers domain access only and flagged for migration to customers/data/ once domain structure is stood up.",
       "enforcement": "hard"
-    },
-    {
-      "name": "machine-readability-first",
-      "id": "machine-readability-first",
-      "priority": 9,
-      "statement": "Code conventions prioritize machine readability first, human readability second. Verbose over clever, flat over nested, obvious over elegant. Sufficient consideration for manual auditing by the project owner, but optimized for agent execution speed and interpretation accuracy.",
-      "text": "Code conventions prioritize machine readability first, human readability second. Verbose over clever, flat over nested, obvious over elegant. Sufficient consideration for manual auditing by the project owner, but optimized for agent execution speed and interpretation accuracy.",
-      "enforcement": "standard"
     },
     {
       "name": "ask-before-accessing-sensitive",
       "id": "ask-before-accessing-sensitive",
-      "priority": 10,
-      "statement": "When encountering data that may be sensitive and the contents are unknown, agents must stop and ask before accessing. When in doubt, do not open — escalate to the human.",
-      "text": "When encountering data that may be sensitive and the contents are unknown, agents must stop and ask before accessing. When in doubt, do not open — escalate to the human.",
+      "priority": 9,
+      "statement": "When in doubt about whether data is sensitive or whether an operation is compliant, the agent stops and asks. No best-guess on compliance-adjacent operations.",
+      "text": "When in doubt about whether data is sensitive or whether an operation is compliant, the agent stops and asks. No best-guess on compliance-adjacent operations.",
       "enforcement": "hard"
-    }
-  ],
-  "build_commands": {
-    "install": "npm install",
-    "build": "npm run build",
-    "dev": "npm run dev",
-    "test": "npm test",
-    "lint": "npm run lint",
-    "typecheck": "npm run typecheck"
-  },
-  "sensitivity_tiers": [
-    {
-      "tier": "restricted",
-      "description": "Highest sensitivity. Data locked to the compliance domain. Never transmitted, logged, displayed, or made accessible outside the compliance boundary under any circumstances.",
-      "examples": [
-        "SAR filing data",
-        "SAR filing existence/status",
-        "FinCEN filing content",
-        "FinCEN integration payloads"
-      ],
-      "handling": {
-        "logging": "forbidden",
-        "display": "forbidden",
-        "transmission": "compliance-internal-only",
-        "storage": "encrypted-at-rest-compliance-domain-only",
-        "cross_domain_access": "forbidden"
-      }
     },
     {
-      "tier": "high",
-      "description": "Sensitive credentials and personally identifiable information. Must be encrypted at rest, never logged or exposed in errors or API responses. Accessed only through tokenized/masked interfaces outside the owning domain.",
-      "examples": [
-        "card numbers (PAN)",
-        "social security numbers (SSN)",
-        "bank account numbers",
-        "routing numbers",
-        "encryption keys",
-        "JWT secrets",
-        "merchant tax IDs",
-        "employer identification numbers (EIN)",
-        "customer names combined with financial data",
-        "customer bank information"
-      ],
-      "handling": {
-        "logging": "forbidden",
-        "display": "tokenized-or-masked-only",
-        "transmission": "encrypted-and-tokenized",
-        "storage": "aes-256-gcm-encrypted-at-rest",
-        "cross_domain_access": "tokenized-interface-only"
-      }
-    },
-    {
-      "tier": "standard",
-      "description": "General merchant and operational data. Standard access controls apply. Must still follow domain boundary rules.",
-      "examples": [
-        "merchant business names",
-        "merchant tier information",
-        "transaction status (non-financial)",
-        "onboarding workflow state"
-      ],
-      "handling": {
-        "logging": "permitted-no-correlation-with-higher-tiers",
-        "display": "permitted",
-        "transmission": "encrypted-in-transit",
-        "storage": "standard",
-        "cross_domain_access": "through-shared-interfaces-only"
-      }
+      "name": "independent-test-validation",
+      "id": "independent-test-validation",
+      "priority": 10,
+      "statement": "Integration tests must be authored by an agent independent of the code author. Domain agents write their own unit tests; the QA agent writes all integration tests. This breaks the circular trust loop where the same agent's blind spots propagate to both code and test layers. Independent third-party scanning (Snyk) provides an additional baseline that no project agent authored.",
+      "text": "Integration tests must be authored by an agent independent of the code author. Domain agents write their own unit tests; the QA agent writes all integration tests. This breaks the circular trust loop where the same agent's blind spots propagate to both code and test layers. Independent third-party scanning (Snyk) provides an additional baseline that no project agent authored.",
+      "enforcement": "hard"
     }
   ]
 }

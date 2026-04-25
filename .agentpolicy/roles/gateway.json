@@ -1,6 +1,6 @@
 {
   "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "role": {
     "name": "gateway",
     "purpose": "Owns the unified API entry point: routing, authentication middleware, rate limiting. Single front door for all external requests."
@@ -36,10 +36,12 @@
     "Reading or writing any path outside gateway/ and shared/",
     "Implementing business logic that belongs in other domains",
     "Logging or exposing sensitive data from request payloads",
-    "Bypassing authentication or rate limiting for convenience"
+    "Bypassing authentication or rate limiting for convenience",
+    "Writing integration tests for own code (integration tests must come from QA)"
   ],
   "conventions": {
-    "testing": "unit-and-integration-tests-required"
+    "testing": "unit-and-integration-tests-required",
+    "integration_test_authorship": "qa-only"
   },
   "escalation_triggers": [
     "Changes to authentication or authorization logic",

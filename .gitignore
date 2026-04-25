@@ -46,3 +46,9 @@ docker-compose.override.yml
 *.tfstate
 *.tfstate.backup
 *.tfvars
+
+# Aegis governance — local session state
+# Note: .agentpolicy/state/overrides.jsonl is intentionally tracked. This repo is a
+# demonstration of the Aegis governance stack and the override ledger is part of
+# the audit surface that needs to be visible.
+.agentpolicy/sessions/

@@ -1,9 +1,9 @@
 {
   "$schema": "https://aegis.dev/schema/role.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "role": {
     "name": "qa",
-    "purpose": "Audit function. Read access to all domains. Write access only to qa/reports/ (append-only). Validates that no agent worked outside its lane, checks cross-domain handoffs followed protocol, runs the final compliance gate before anything ships. Eyes on everything, hands on nothing. If QA doesn't sign off, nothing goes out."
+    "purpose": "Audit function and integration test author. Read access to all domains. Write access to qa/reports/ (append-only) and integration test directories across all domains. Validates that no agent worked outside its lane, checks cross-domain handoffs followed protocol, runs the final compliance gate before anything ships. Writes all integration tests to break the circular trust loop where code authors validate their own work. Eyes on everything. If QA doesn't sign off, nothing goes out."
   },
   "scope": {
     "primary_paths": [
@@ -35,17 +35,37 @@
       "data/"
     ],
     "write": [
-      "qa/reports/"
+      "qa/reports/",
+      "gateway/tests/",
+      "onboarding/tests/",
+      "payments/tests/",
+      "compliance/tests/",
+      "customers/tests/",
+      "dashboard/tests/",
+      "shared/tests/"
     ]
   },
   "write_mode": "append-only",
+  "write_mode_exceptions": {
+    "integration_test_paths": [
+      "gateway/tests/",
+      "onboarding/tests/",
+      "payments/tests/",
+      "compliance/tests/",
+      "customers/tests/",
+      "dashboard/tests/",
+      "shared/tests/"
+    ],
+    "description": "QA reports in qa/reports/ are append-only. Integration test files in */tests/ directories may be created and updated by QA as part of its integration test authorship responsibilities."
+  },
   "forbidden_actions": [
     "Modifying production code in any domain",
     "Modifying business logic in any domain",
     "Modifying configuration in any domain",
     "Modifying shared interfaces or types",
     "Deleting or editing previously written QA reports",
-    "Approving a release with failing quality gates"
+    "Approving a release with failing quality gates",
+    "Writing unit tests (unit tests are the responsibility of the domain agent that wrote the code)"
   ],
   "validation_responsibilities": [
     "Verify no agent wrote outside its permitted paths",
@@ -55,8 +75,30 @@
     "Verify all quality gates pass: tests, lint, typecheck, coverage requirements",
     "Verify SAR and FinCEN data remained within compliance domain",
     "Verify dashboard only received tokenized/masked data",
-    "Produce timestamped, preserved reports of all findings"
+    "Produce timestamped, preserved reports of all findings",
+    "Write integration tests for all domain code to provide independent validation"
   ],
+  "integration_test_authorship": {
+    "description": "QA is the sole author of integration tests across all domains. This breaks the circular trust loop where domain agents write both code and the tests that validate it. QA writes tests from an independent perspective, catching blind spots that code authors structurally cannot.",
+    "scope": [
+      "gateway",
+      "onboarding",
+      "payments",
+      "compliance",
+      "customers",
+      "dashboard",
+      "shared"
+    ],
+    "write_paths": [
+      "gateway/tests/",
+      "onboarding/tests/",
+      "payments/tests/",
+      "compliance/tests/",
+      "customers/tests/",
+      "dashboard/tests/",
+      "shared/tests/"
+    ]
+  },
   "report_format": {
     "path": "qa/reports/",
     "append_only": true,

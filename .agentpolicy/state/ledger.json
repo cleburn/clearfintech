@@ -1,6 +1,6 @@
 {
   "$schema": "https://aegis.dev/schema/ledger.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "sequence": 0,
   "tasks": [],
   "write_protocol": {

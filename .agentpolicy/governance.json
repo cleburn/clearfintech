@@ -1,6 +1,6 @@
 {
   "$schema": "https://aegis.dev/schema/governance.v0.1.0.json",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "autonomy": {
     "default_level": "advisory",
     "levels": {
@@ -101,7 +101,14 @@
       "must_pass_lint": true,
       "must_pass_typecheck": true,
       "must_add_tests": true,
-      "must_update_docs": false
+      "must_update_docs": false,
+      "custom_checks": [
+        {
+          "name": "snyk_security_scan",
+          "command": "snyk test && snyk code test",
+          "description": "Third-party security and code analysis scan — independent validation against vulnerability databases and security anti-patterns. Catches dependency vulnerabilities, hardcoded secrets, PII exposure patterns, and insecure crypto usage. Not authored by any project agent."
+        }
+      ]
     },
     "override_authority": "none",
     "description": "No person or agent may override or bypass quality gates. All gates must pass before any change ships.",
@@ -158,6 +165,12 @@
         "scope": "all",
         "required": true,
         "description": "QA agent must validate and sign off before any change ships. No exceptions."
+      },
+      {
+        "name": "snyk-security-scan",
+        "scope": "all",
+        "required": true,
+        "description": "Snyk dependency vulnerability scan and code analysis must pass. Independent third-party validation that no agent authored. Catches dependency vulnerabilities, hardcoded secrets, PII exposure patterns, and insecure crypto usage."
       }
     ]
   },
@@ -197,6 +210,12 @@
       "scope": "all",
       "rule": "Code conventions prioritize machine readability first. Verbose over clever, flat over nested, obvious over elegant.",
       "enforcement": "preferred"
+    },
+    {
+      "id": "integration-tests-by-qa-only",
+      "scope": "all",
+      "rule": "Integration tests must be written by the QA agent, not by the domain agent that wrote the code under test. Domain agents write their own unit tests. This breaks the circular trust loop where the same agent's blind spots propagate to both code and test layers.",
+      "enforcement": "strict"
     }
   ],
   "override_protocol": {
@@ -211,7 +230,8 @@
       "cross-domain-interfaces-only",
       "quality-gates-absolute",
       "seed-data-as-production",
-      "ask-before-accessing-sensitive"
+      "ask-before-accessing-sensitive",
+      "independent-test-validation"
     ]
   },
   "cross_domain_rules": {
