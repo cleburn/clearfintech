@@ -2,7 +2,7 @@
 
 Payment processing and merchant services platform built for small-to-mid-size businesses. ClearFinTech handles the financial infrastructure — payment compliance, fraud monitoring, and regulatory reporting — so merchants can focus on running their businesses.
 
-[![CI](https://github.com/cleburn/clearfintech/actions/workflows/ci.yml/badge.svg)](https://github.com/cleburn/clearfintech/actions/workflows/ci.yml) [![Known Vulnerabilities](https://snyk.io/test/github/cleburn/clearfintech/badge.svg)](https://snyk.io/test/github/cleburn/clearfintech)
+[![CI](https://github.com/cleburn/clearfintech/actions/workflows/ci.yml/badge.svg)](https://github.com/cleburn/clearfintech/actions/workflows/ci.yml) [![Snyk](https://github.com/cleburn/clearfintech/actions/workflows/snyk.yml/badge.svg)](https://github.com/cleburn/clearfintech/actions/workflows/snyk.yml)
 
 CI runs the project's own quality gates — typecheck, lint, and the 23-suite test matrix. Snyk provides independent third-party validation: dependency vulnerability database and static code analysis whose rule sets were not authored by any agent on this project.
 
